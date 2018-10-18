@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+  .box
+  {
+   width:800px;
+   margin:0 auto;
+  }
+  .active_tab1
+  {
+   background-color:#fff;
+   color:#333;
+   font-weight: 600;
+  }
+  .inactive_tab1
+  {
+   background-color: #f5f5f5;
+   color: #333;
+   cursor: not-allowed;
+  }
+  .has-error
+  {
+   border-color:#cc0000;
+   background-color:#ffff99;
+  }
+
+  /* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+  </style>
+
+</head>
+<body>
+
+<div class="container box">
+
+	<form method="post" id="userProfileForm">
+
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+		      <a class="nav-link active_tab1" id="list_personal_details" style="border:1px solid #ccc">Personal Details</a>
+		     </li>
+
+		     <li class="nav-item">
+		      <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_educational_details">Educational Details</a>
+		     </li>
+
+		     <li class="nav-item">
+		      <a class="nav-link inactive_tab1" id="list_resume_details" style="border:1px solid #ccc">Resume Details</a>
+		     </li>
+    	</ul>
+
+<!-- FIRST TAB-->
+
+
+    	<div class="tab-content">
+		  <br>
+    		<div class="tab-pane active" id="personal_details">
+    			<div class="panel panel-default">
+       				<div class="panel-heading">Personal Details</div>
+					<br>
+	       				<div class="form-group">
+				        	<label>Enter First Name</label>
+				         	<input type="text" name="first_name" id="first_name" class="form-control" required="" />
+				        </div>
+
+				        <div class="form-group">
+				         	<label>Enter Last Name</label>
+				         	<input type="text" name="last_name" id="last_name" class="form-control" required="" />
+				        </div>
+
+				        <div class="form-group">
+				         	<label>Gender</label>
+				         	<label class="radio-inline">
+				          	<input type="radio" name="gender" value="male" checked> Male
+				         	</label>
+				         	<label class="radio-inline">
+				          	<input type="radio" name="gender" value="female"> Female
+				         	</label>
+				        </div>
+
+				        <div>
+					      <div class="form-group">
+					      <label>Date of Birth</label>
+					      <input type="date" class="form-control" id="dob" placeholder="Date of Birth" required="" min="1970-12-31" max="2000-12-31">
+					    </div>
+
+
+	       				<div class="form-group">
+					       	<label>Enter Mobile No.</label>
+					        <input type="text" name="mobile_no" id="mobile_no" class="form-control" required="" />
+					        <span id="error_mobile_no" class="text-danger"></span>
+					    </div>
+
+					    <!-- address-line1 input-->
+                <div class="control-group">
+                    <label class="control-label">Address Line 1</label>
+                    <div class="controls">
+                        <input id="address-line1" name="address-line1" type="text" placeholder="address line 1"
+                        class="form-control" required="">
+                        <p class="help-block">Street address, P.O. box, company name, c/o</p>
+                    </div>
+                </div>
+                <!-- address-line2 input-->
+                <div class="control-group">
+                    <label class="control-label">Address Line 2</label>
+                    <div class="controls">
+                        <input id="address-line2" name="address-line2" type="text" placeholder="address line 2"
+                        class="form-control" required="">
+                        <p class="help-block">Apartment, suite , unit, building, floor, etc.</p>
+                    </div>
+                </div>
+                <!-- city input-->
+                <div class="control-group">
+                    <label class="control-label">City / Town</label>
+                    <div class="controls">
+                        <input id="city" name="city" type="text" placeholder="city" class="form-control" required="">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <!-- region input-->
+                <div class="control-group">
+                    <label class="control-label">State / Province / Region</label>
+                    <div class="controls">
+                        <input id="region" name="region" type="text" placeholder="state / province / region"
+                        class="form-control" required="">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <!-- postal-code input-->
+                <div class="control-group">
+                    <label class="control-label">Zip / Postal Code</label>
+                    <div class="controls">
+                        <input id="postal-code" name="postal-code" type="text" placeholder="zip or postal code"
+                        class="form-control" required="">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+
+                    <br />
+			       		<div align="center">
+
+			         		<button type="button" name="btn_personal_details" id="btn_personal_details" class="btn btn-info btn-lg">Next</button>
+			        	</div>
+			        <br />
+       			</div>
+
+
+    			</div>
+
+    		</div>
+
+<!--SECOND TAB-->
+
+
+			<div class="tab-pane fade" id="educational_details">
+    			<div class="panel panel-default">
+       				<div class="panel-heading">Educational Details</div>
+					<br>
+	       				<div class="form-group">
+				        	<label>Tick if you have completed class 10</label>
+				         	<input type="checkbox" name="class_tenth" id="class_tenth" />
+
+				         	<div id="tenth" style="display: none;">
+
+					        <div class="form-group">
+					        	<label>Institute Name</label>
+					         	<input type="text" name="tenth_institute_name" id="tenth_institute_name" class="form-control"/>
+					        </div>
+
+					         <div class="form-group">
+							  	<label for="tenth_board">Select Board</label>
+							  	<select class="form-control" id="sel1">
+							    	<option>CBSE</option>
+							    	<option>ICSE</option>
+							    	<option>UP</option>
+							    	<option>MP</option>
+							    	<option>Other</option>
+							  	</select>
+							</div>
+
+							 <div class="form-group">
+					        	<label>Percentage</label>
+					         	<input type="number" name="tenth_percentage" id="tenth_percentage" class="form-control" min="1" maxlength="100" />
+					        </div>
+
+					        <div class="form-group">
+					        	<label>Completion date</label>
+					         	<input type="date" name="tenth_date" id="tenth_date" class="form-control" min="1990-12-31" max="2018-12-31" />
+					        </div>
+
+                        </div>
+				        </div>
+
+
+
+						<div class="form-group">
+				        	<label>Tick if you have completed class 12</label>
+				         	<input type="checkbox" name="class_twelth" id="class_twelth"/>
+
+				         	<div id="twelth" style="display: none;">
+
+					        <div class="form-group">
+					        	<label>Institute Name</label>
+					         	<input type="text" name="twelth_institute_name" id="twelth_institute_name" class="form-control"/>
+					        </div>
+
+					         <div class="form-group">
+							  	<label for="twelth_board">Select Board</label>
+							  	<select class="form-control" id="sel1">
+							    	<option>CBSE</option>
+							    	<option>ICSE</option>
+							    	<option>UP</option>
+							    	<option>MP</option>
+							    	<option>Other</option>
+							  	</select>
+							</div>
+
+							 <div class="form-group">
+					        	<label>Percentage</label>
+					         	<input type="number" name="twelth_percentage" id="twelth_percentage" class="form-control" min="1" maxlength="100" />
+					        </div>
+
+					        <div class="form-group">
+					        	<label>Completion date</label>
+					         	<input type="date" name="tenth_date" id="tenth_date" class="form-control" min="1990-12-31" max="2018-12-31" />
+					        </div>
+
+                        </div>
+				        </div>
+
+				        <div class="form-group">
+				        	<label>Tick if you have completed/ pursuing Diploma</label>
+				         	<input type="checkbox" name="diploma" id="class_diploma"/>
+
+				         	<div id="diploma" style="display: none;">
+
+					        <div class="form-group">
+					        	<label>Institute Name</label>
+					         	<input type="text" name="diploma_institute_name" id="diploma_institute_name" class="form-control"/>
+					        </div>
+
+					        <div class="form-group">
+					        	<label>Stream</label>
+					         	<input type="text" name="diploma_stream" id="diploma_stream" class="form-control"/>
+					        </div>
+
+							 <div class="form-group">
+					        	<label>Percentage</label>
+					         	<input type="number" name="diploma_percentage" id="diploma_percentage" class="form-control" min="1" maxlength="100" />
+					        </div>
+
+					        <div class="form-group">
+					        	<label>Completion date</label>
+					         	<input type="date" name="tenth_date" id="tenth_date" class="form-control" min="1990-12-31" max="2018-12-31" />
+					        </div>
+
+                        </div>
+				        </div>
+
+				        <div class="form-group">
+				        	<label>Tick if you have completed/ pursuing Bachelor degree</label>
+				         	<input type="checkbox" name="bachelor" id="class_bachelor"/>
+
+				         	<div id="bachelor" style="display: none;">
+
+					        <div class="form-group">
+					        	<label>Institute Name</label>
+					         	<input type="text" name="bachelor_institute_name" id="bachelor_institute_name" class="form-control"/>
+					        </div>
+
+					        <div class="form-group">
+					        	<label>Stream</label>
+					         	<input type="text" name="bachelor_stream" id="bachelor_stream" class="form-control"/>
+					        </div>
+
+							 <div class="form-group">
+					        	<label>Percentage</label>
+					         	<input type="number" name="bachelor_percentage" id="bachelor_percentage" class="form-control" min="1" maxlength="100" />
+					        </div>
+
+					        <div class="form-group">
+					        	<label>Completion date</label>
+					         	<input type="date" name="bachelor_date" id="bachelor_date" class="form-control" min="1990-12-31" max="2018-12-31" />
+					        </div>
+
+                        </div>
+				        </div>
+
+
+
+
+                    <br />
+			       		<div align="center">
+         					<button type="button" name="previous_btn_educational_details" id="previous_btn_educational_details" class="btn btn-default btn-lg">Previous</button>
+			         		<button type="button" name="btn_educational_details" id="btn_educational_details" class="btn btn-info btn-lg">Next</button>
+			        	</div>
+			        <br />
+       			</div>
+
+
+    			</div>
+
+    		</div>
+
+<!--THIRD TAB-->
+
+			<div class="tab-pane fade" id="resume_details">
+    			<div class="panel panel-default">
+       				<div class="panel-heading">Resume Details</div>
+					<br>
+	       				 <div class="form-group">
+						    <label for="resume_headline">Resume Headline*:</label>
+						    <textarea class="form-control" placeholder="It is the first thing recruiters notice in your profile. Write concisely what makes you unique and right person for the job you are looking for."></textarea>
+						  </div>
+
+						  <div class="form-group">
+						  	<h5><b>Skills*:</b></h5>
+
+						  	<ul id="ul">
+
+						  </ul>
+						  </div>
+
+
+
+					      <div class="form-row">
+						     <div class="form-group col-md-4">
+								  <input type="text" id="input" placeholder="e.g. C++" class="form-control" required="" onfocus="this.value=''">
+						     </div>
+						     <div class="form-group col-md-6">
+								<input type="button" name="skillsButton" id="skillsButton" onclick="addItem()" class="btn btn-primary btn-sm" value="Add Skill" >
+							 </div>
+						   </div>
+
+								<!-- PROJETCS -->
+						  <div id="projects">
+						  	<div class="form-group">
+						  		<h3 style="color: white;">Projects</h3>
+						  		<h3 style="background-color: #F2F1EF;">Projects &nbsp; <span><button class="btn btn-info glyphicon glyphicon-plus-sign" id="add_more_project"></button></span></h3>
+						  	</div>
+
+						  	<div id="project">
+						  	  <div class="form-group">
+					        		<label for="project_name">Project Name</label>
+					         		<input type="text" name="project_name" id="project_name" class="form-control"/>
+					        	</div>
+						        	<div class="form-group">
+							    		<label for="project_description">Project Description</label>
+							    		<textarea class="form-control" name="project_description" id="project_description"></textarea>
+							    	</div>
+
+							    <div class="form-group">
+							    	<label for="project_link">Project Link</label>
+							    	<textarea class="form-control" name="project_link" id="project_link"></textarea>
+							    </div>
+
+							    <div class="form-group">
+							  	<label for="duration">Duration</label>
+							  </div>
+							  <div class="form-group">
+	  							<div class="row">
+	  								<div class="col-md-3">
+	  									<span><b>Between:</b></span><input type="date" name="fromDate" class="form-control">
+	  		                        </div>
+	  		                    <div class="col-md-3">
+	  			                       <span><b>To:</b></span><input type="date" name="toDate" class="form-control">
+	  		                    </div>
+	  	                    </div>
+	  						</div>
+							<hr>
+
+							</div>
+
+						  </div>
+
+
+
+						  <!-- CERTIFICATIONS -->
+						  <div id="certificates">
+						  	<div class="form-group">
+						  		<h3 style="background-color: #F2F1EF;">Certifications &nbsp; <span><button class="btn btn-info glyphicon glyphicon-plus-sign" id="add_more_certificate"></button></span></h3>
+						  	</div>
+
+						  	<div id="certificate">
+						  	  <div class="form-group">
+					        		<label for="certificate_title">Certificate Title</label>
+					         		<input type="text" name="certificate_title" id="certificate_title" class="form-control"/>
+					          </div>
+                                 <div class="form-group">
+					        		<label for="certificate_organization">Organization Name</label>
+					         		<input type="text" name="certificate_organization" id="certificate_organization" class="form-control"/>
+					             </div>
+							    <div class="form-group">
+							    	<label for="certificate_link">Certificate Link</label>
+							    	<textarea class="form-control" name="certificate_link" id="certificate_link"></textarea>
+							    </div>
+
+							    <div class="form-group">
+							  	<label for="duration">Duration</label>
+							  </div>
+							  <div class="form-group">
+	  							<div class="row">
+	  								<div class="col-md-3">
+	  									<span><b>Between:</b></span><input type="date" name="fromDate" class="form-control">
+	  		                        </div>
+	  		                    <div class="col-md-3">
+	  			                       <span><b>To:</b></span><input type="date" name="toDate" class="form-control">
+	  		                    </div>
+	  	                    </div>
+	  						</div>
+							<hr>
+
+							</div>
+
+						  </div>
+
+
+							<!-- AWARDS AND RECOGNITIONS -->
+						  <div id="awards">
+						  	<div class="form-group">
+						  		<h3 style="background-color: #F2F1EF;">Awards & Recognitions &nbsp; <span><button class="btn btn-info glyphicon glyphicon-plus-sign" id="add_more_award"></button></span></h3>
+						  	</div>
+
+						  	<div id="award">
+						  	  <div class="form-group">
+					        		<label for="certificate_title">Title</label>
+					         		<input type="text" name="award_title" id="award_title" class="form-control"/>
+					          </div>
+                                 <div class="form-group">
+					        		<label for="certificate_organization">Organization Name</label>
+					         		<input type="text" name="certificate_organization" id="certificate_organization" class="form-control"/>
+					             </div>
+
+					             <div class="form-group">
+							    	<label for="award_description">Award Description</label>
+							    	<textarea class="form-control" name="award_description" id="award_description"></textarea>
+							    </div>
+
+							       <hr>
+
+							</div>
+
+						  </div>
+
+						  <div class="form-group">
+	    <label for="extras">Mention your extra-curricular activities</label>
+	    <textarea class="form-control" rows="5">1.
+2.
+3.</textarea>
+	  </div>
+
+	   <div class="form-group">
+	    <label for="hobby">Hobbies & Interests</label>
+	    <textarea class="form-control" rows="5">1.
+2.
+3.</textarea>
+	  </div>
+
+	   <div class="form-group">
+	    <label for="references">References</label>
+	    <textarea class="form-control" rows="5">1.
+2.
+3.</textarea>
+	  </div>
+
+
+                    <br>
+			       		<div align="center">
+         					<button type="button" name="previous_btn_resume_details" id="previous_btn_resume_details" class="btn btn-default btn-lg">Previous</button>
+			         		<button type="button" name="btn_resume_details" id="btn_resume_details" class="btn btn-info btn-lg">Next</button>
+			        	</div>
+			        <br>
+       			</div>
+
+
+    			</div>
+
+    		</div>
+
+    		<!--END OF TABS-->
+    		</form>
+    	</div>
+
+
+</body>
+</html>
+
+<script>
+
+	$(document).ready(function(){
+		//FIRST TAB
+		$('#btn_personal_details').click(function(){
+			var first_name = document.getElementById('first_name').value;
+			var last_name = document.getElementById('last_name').value;
+			var dob = document.getElementById('dob').value;
+			var mobile_no = document.getElementById('mobile_no').value;
+			var address_line1 = document.getElementById('address-line1').value;
+			var address_line2 = document.getElementById('address-line2').value;
+			var city = document.getElementById('city').value;
+			var region = document.getElementById('region').value;
+			var postal_code = document.getElementById('postal-code').value;
+
+			if(first_name == '' || last_name == '' || dob == '' || mobile_no == '' || address_line1 == '' || address_line2 == '' || city == '' || region == '' || postal_code == ''){
+				alert('Please fill the entire form');
+					return false;
+			}
+			else{
+				$('#list_personal_details').removeClass('active active_tab1');
+   				$('#list_personal_details').removeAttr('href data-toggle');
+   				$('#personal_details').removeClass('active');
+   				$('#list_personal_details').addClass('inactive_tab1');
+
+   				$('#list_educational_details').removeClass('inactive_tab1');
+				$('#list_educational_details').addClass('active_tab1 active');
+				$('#list_educational_details').attr('href', '#educational_details');
+				$('#list_educational_details').attr('data-toggle', 'tab');
+				$('#educational_details').addClass('active in');
+			}
+		});
+
+		//SECOND TAB
+		$('#previous_btn_educational_details').click(function(){
+		  $('#list_educational_details').removeClass('active active_tab1');
+		  $('#list_educational_details').removeAttr('href data-toggle');
+		  $('#educational_details').removeClass('active in');
+		  $('#list_educational_details').addClass('inactive_tab1');
+		  $('#list_personal_details').removeClass('inactive_tab1');
+		  $('#list_personal_details').addClass('active_tab1 active');
+		  $('#list_personal_details').attr('href', '#personal_details');
+		  $('#list_personal_details').attr('data-toggle', 'tab');
+		  $('#personal_details').addClass('active in');
+		 });
+
+		$('#btn_educational_details').click(function(){
+			$('#list_educational_details').removeClass('active active_tab1');
+		   $('#list_educational_details').removeAttr('href data-toggle');
+		   $('#educational_details').removeClass('active');
+		   $('#list_educational_details').addClass('inactive_tab1');
+		   $('#list_resume_details').removeClass('inactive_tab1');
+		   $('#list_resume_details').addClass('active_tab1 active');
+		   $('#list_resume_details').attr('href', '#contact_details');
+		   $('#list_resume_details').attr('data-toggle', 'tab');
+		   $('#resume_details').addClass('active in');
+		});
+
+		//THIRD TAB
+		$('#previous_btn_resume_details').click(function(){
+		  $('#list_resume_details').removeClass('active active_tab1');
+		  $('#list_resume_details').removeAttr('href data-toggle');
+		  $('#resume_details').removeClass('active in');
+		  $('#list_resume_details').addClass('inactive_tab1');
+		  $('#list_educational_details').removeClass('inactive_tab1');
+		  $('#list_educational_details').addClass('active_tab1 active');
+		  $('#list_educational_details').attr('href', '#educational_details');
+		  $('#list_educational_details').attr('data-toggle', 'tab');
+		  $('#educational_details').addClass('active in');
+		 });
+
+		$('#btn_resume_details').click(function(){
+			$('#btn_resume_details').attr("disabled", "disabled");
+   			$(document).css('cursor', 'prgress');
+   			$("#userProfileForm").submit();
+		});
+
+	});
+
+</script>
+
+<script type="text/javascript">
+	$('#class_tenth').change(function() {
+    $('#tenth').toggle();
+});
+
+	$('#class_twelth').change(function() {
+    $('#twelth').toggle();
+});
+	$('#class_diploma').change(function() {
+    $('#diploma').toggle();
+});
+	$('#class_bachelor').change(function() {
+    $('#bachelor').toggle();
+});
+</script>
+<script type="text/javascript">
+	function addItem(){
+		var input = document.getElementById('input').value;
+		var ul = document.getElementById('ul');
+		if(input==='')
+		{
+			alert('You must write something!');
+		}
+		else
+		{
+			var li = document.createElement('li');
+			var t = document.createTextNode(input);
+
+			li.appendChild(t);
+			ul.appendChild(li);
+
+		}
+		document.getElementById("input").value = "xxx";
+
+	}
+
+var project_div = `<div id="project">
+						  	  <div class="form-group">
+					        		<label for="project_name">Project Name</label>
+					         		<input type="text" name="project_name" id="project_name" class="form-control"/>
+					        	</div>
+						        	<div class="form-group">
+							    	<label for="project_description">Project Description</label>
+							    	<textarea class="form-control" name="project_description" id="project_description"></textarea>
+							    </div>
+
+							    <div class="form-group">
+							    	<label for="project_link">Project Link</label>
+							    	<textarea class="form-control" name="project_link" id="project_link"></textarea>
+							    </div>
+
+							    <div class="form-group">
+							  	<label for="duration">Duration</label>
+							  </div>
+							  <div class="form-group">
+	  							<div class="row">
+	  								<div class="col-md-3">
+	  									<span><b>Between:</b></span><input type="date" name="fromDate" class="form-control">
+	  		                        </div>
+	  		                    <div class="col-md-3">
+	  			                       <span><b>To:</b></span><input type="date" name="toDate" class="form-control">
+	  		                    </div>
+	  	                    </div>
+	  						</div>
+							<hr>
+
+							</div>`;
+	$('#add_more_project').click(function(){
+		$('#project').prepend(project_div);
+	});
+
+var certificate_div = `<div id="certificate">
+						  	  <div class="form-group">
+					        		<label for="certificate_title">Certificate Title</label>
+					         		<input type="text" name="certificate_title" id="certificate_title" class="form-control"/>
+					          </div>
+                                 <div class="form-group">
+					        		<label for="certificate_organization">Organization Name</label>
+					         		<input type="text" name="certificate_organization" id="certificate_organization" class="form-control"/>
+					             </div>
+							    <div class="form-group">
+							    	<label for="certificate_link">Certificate Link</label>
+							    	<textarea class="form-control" name="certificate_link" id="certificate_link"></textarea>
+							    </div>
+
+							    <div class="form-group">
+							  	<label for="duration">Duration</label>
+							  </div>
+							  <div class="form-group">
+	  							<div class="row">
+	  								<div class="col-md-3">
+	  									<span><b>Between:</b></span><input type="date" name="fromDate" class="form-control">
+	  		                        </div>
+	  		                    <div class="col-md-3">
+	  			                       <span><b>To:</b></span><input type="date" name="toDate" class="form-control">
+	  		                    </div>
+	  	                    </div>
+	  						</div>
+							<hr>
+
+							</div>`;
+
+$('#add_more_certificate').click(function(){
+	$('#certificate').prepend(certificate_div);
+});
+
+var award_div = `<div id="award">
+						  	  <div class="form-group">
+					        		<label for="certificate_title">Title</label>
+					         		<input type="text" name="award_title" id="award_title" class="form-control"/>
+					          </div>
+                                 <div class="form-group">
+					        		<label for="certificate_organization">Organization Name</label>
+					         		<input type="text" name="certificate_organization" id="certificate_organization" class="form-control"/>
+					             </div>
+
+					             <div class="form-group">
+							    	<label for="award_description">Award Description</label>
+							    	<textarea class="form-control" name="award_description" id="award_description"></textarea>
+							    </div>
+
+							       <hr>
+
+							</div>`;
+
+
+
+$('#add_more_award').click(function(){
+	$('#award').prepend(award_div);
+});
+</script>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="location.js">
+
+	<script src="js/main.js"></script>
+		<script
+			  src="https://code.jquery.com/jquery-3.3.1.js"
+			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+			  crossorigin="anonymous"></script>
+	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+
+
+
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+	<title></title>
+	<style type="text/css">
+		body{
+			background-color: #F2F1EF;
+		}
+	</style>
+</head>
+<body>
+
+<div id="navbar">
+
+</div>
+<br>
+<div id="tabs" class="container" style="margin:0 auto">
+
+<div id="tabs-1">
+	<form method="Post" action="#" onsubmit="return urlCheck()">
+		<center><h3>Personal Details</h3></center>
+	  <div class="form-row">
+	    <div class="form-group col-md-6">
+	      <label for="firstName">First Name</label>
+	      <input type="text" class="form-control" id="firstName" placeholder="First Name" required="">
+	    </div>
+	    <div class="form-group col-md-6">
+	      <label for="lastName">Last Name</label>
+	      <input type="text" class="form-control" id="lastName" placeholder="Last Name" required="">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="email">Email</label>
+	    <input type="email" class="form-control" id="email" placeholder="abc@example.com" required="">
+	  </div>
+	  <div class="form-group">
+	    <label for="contactNumber">Contact Number</label>
+	    <input type="tel" class="form-control" id="contactNumber" placeholder="Contact Number" required="">
+	  </div>
+
+</div>
+<p class="border-bottom border-secondary"></p>
+
+<div id="tabs-2">
+		<center><h3>Organizational Details</h3></center>
+
+	  <div class="form-row">
+	    <div class="form-group col-md-6">
+	      <label for="organizationName">Organization Name</label>
+	      <input type="text" class="form-control" id="organizationName" placeholder="Organization Name" required="">
+	    </div>
+	    <div class="form-group col-md-6">
+	      <label for="organizationWebsite">Organization Website</label>
+	      <input type="text" class="form-control" id="organizationWebsite" placeholder="Organization Website" required="">
+	    </div>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="organizationDescription">Organization Description</label>
+	    <textarea class="form-control" placeholder="Give some important information about the organization..." required=""></textarea>
+	  </div>
+
+	  <div class="input-group mb-3">
+  		<div class="input-group-prepend">
+    	<span class="input-group-text">Upload</span>
+  		</div>
+
+  		<div class="custom-file">
+    		<input type="file" class="custom-file-input" id="logo" accept="image/*" required="">
+    		<label class="custom-file-label" for="logo">Company Logo</label>
+  		</div>
+	</div>
+
+	    <small>**Allowed file type(s): .jpg, .jpeg, .png, .gif</small><br>
+
+
+</div>
+<p class="border-bottom border-secondary"></p>
+
+
+<div id="tabs-3">
+<center><h3>Post Job</h3></center>
+
+
+	  <div class="form-group">
+	  	<h6><b>Select Primary Profile*:</b></h6>
+	  </div>
+
+	  <div class="form-group">
+	  	<div class="row">
+	  		<div class="col-md-3 radio">
+	  			<input type="radio" name="profile" required=""> Business Development (Sales)
+	  		</div>
+	  				<div class="col-md-3 radio">
+	  			<input type="radio" name="profile"> Web Development
+	  		</div>
+	  	</div>
+	  </div>
+
+	  <div class="form-group">
+	  	<div class="row">
+	  		<div class="col-md-3 radio">
+	  			<input type="radio" name="profile"> Graphic Design
+	  		</div>
+	  				<div class="col-md-3 radio">
+	  			<input type="radio" name="profile"> Content Writing
+	  		</div>
+	  	</div>
+	  </div>
+
+	  <div class="form-group">
+	  	<div class="row">
+	  		<div class="col-md-3 radio">
+	  			<input type="radio" name="profile"> Operations
+	  		</div>
+	  				<div class="col-md-3 radio">
+	  			<input type="radio" name="profile"> Mobile App Development
+	  		</div>
+	  	</div>
+	  </div>
+
+	  <div class="form-group">
+	  	<div class="row">
+	  		<div class="col-md-3 radio">
+	  			<input type="radio" name="profile"> Social Media Marketing
+	  		</div>
+	  				<div class="col-md-3 radio">
+	  			<input type="radio" name="profile"> Marketing
+	  		</div>
+	  	</div>
+	  </div>
+
+	  <div class="form-group">
+	  	<div class="row">
+	  		<div class="col-md-3 radio">
+	  			<input type="radio" name="profile"> Digital Marketing
+	  		</div>
+	  				<div class="col-md-3 radio">
+	  			<input type="radio" name="profile"> Human Resources (HR)
+	  		</div>
+	  	</div>
+	  </div>
+
+	  <div class="form-group">
+	  	<div class="row">
+	  		<div class="col-md-3 radio">
+	  			<input type="radio" name="profile"> Law/ Legal
+	  		</div>
+	  				<div class="col-md-3 radio">
+	  			<input type="radio" name="profile"> Campus Ambassador
+	  		</div>
+	  	</div>
+	  </div>
+	  <br>
+
+	  <div class="form-group">
+	  	<h6><b>Select type of job*:</b></h6>
+	  </div>
+
+	  <div class="form-group">
+	  	<div class="row">
+	  		<div class="col-md-3 radio">
+	  			<input type="radio" name="type" required=""> Regular (In-office/On-field)
+	  		</div>
+	  				<div class="col-md-3 radio">
+	  			<input type="radio" name="type"> Work from home
+	  		</div>
+	  	</div>
+	  </div>
+
+
+	  <div class="form-group">
+	  	<h6><b>Job location(s)*:</b></h6>
+	  </div>
+
+	  <ol id="ul">
+
+	  </ol>
+
+	  <div class="form-row">
+	    <div class="form-group col-md-4">
+			  <input type="text" id="input" list="locations" placeholder="e.g. Delhi" class="form-control" required="">
+	    </div>
+	    <div class="form-group col-md-6">
+			<input type="button" name="locationButton" id="locationButton" onclick="addItem()" class="btn btn-primary btn-sm" value="Add location(s)">
+		</div>
+	  </div>
+
+  <datalist id="locations">
+    <option value="Delhi">
+    <option value="Noida">
+    <option value="Greater Noida">
+    <option value="Hyderabad">
+    <option value="Bangalore">
+    <option value="Chandigarh">
+    <option value="Jaipur">
+    <option value="Gurgaon">
+    <option value="Chennai">
+    <option value="Coimbatore">
+    <option value="Ghaziabad">
+    <option value="Mumbai">
+    <option value="Pune">
+  </datalist>
+	  <div class="form-group">
+	  	<h6><b>Number of openings*:</b></h6>
+	  </div>
+
+	  <div class="form-group">
+	    <input type="text" class="form-control" id="openings" placeholder="Enter only numbers" required="">
+	  </div>
+
+	  <div class="form-group">
+	  	<h6><b>Start date*:</b></h6>
+	  </div>
+
+	  <div class="form-group">
+	  	<div class="row">
+	  		<div class="col-md-3">
+	  			<span><b>Between:</b></span><input type="date" name="fromDate" class="form-control" required="">
+	  		</div>
+	  		<div class="col-md-3">
+	  			<span><b>To:</b></span><input type="date" name="toDate" class="form-control" required="">
+	  		</div>
+	  	</div>
+	  </div>
+
+<br><br>
+
+		<div class="form-group">
+	    <label for="Responsibilities">Write a detailed yet crisp description of candidate's responsibilities and convey the excitement of the role *:</label>
+	    <textarea class="form-control" rows="5">Selected candidate's day-to-day responsibilities include:
+1.
+2.
+3.</textarea>
+	  </div>
+<p class="border-bottom border-secondary"></p>
+		<center><h3>Salary & Perks:*</h3></center>
+
+		<div class="form-group">
+	 	   <label for="salary"><b>Salary in &#x20b9; (per month)</b></label>
+	       <input type="text" class="form-control" id="salary" placeholder="50000" required="">
+	    </div>
+
+	  	<h6><b>Perks</b></h6>
+
+	  	<div class="form-group">
+	  	<div class="row">
+	  		<div class="col-md-3">
+	  			<input type="checkbox" name="perk1"> Flexible work hours
+	  		</div>
+	  				<div class="col-md-3 radio">
+	  			<input type="checkbox" name="perk2"> 5 days a week
+	  		</div>
+	  	</div>
+	  </div>
+
+		<div class="form-group">
+			  	<div class="row">
+			  		<div class="col-md-3">
+			  			<input type="checkbox" name="perk3"> Informal dress code
+			  		</div>
+			  				<div class="col-md-3 radio">
+			  			<input type="checkbox" name="perk3"> Free snacks and beverages
+			  		</div>
+			  	</div>
+		</div>
+
+			  <div class="form-group">
+			  	<div class="row">
+			  		<div class="col-md-3">
+			  			<input type="checkbox" name="perk5"> Health care insurance
+			  		</div>
+			  				<div class="col-md-3 radio">
+			  			<input type="checkbox" name="perk6"> Vacation & paid time off
+			  		</div>
+			  	</div>
+			</div>
+
+	  <center><button class="next btn btn-primary">Submit</button></center>
+
+<br><br>
+
+
+</form>
+
+
+</div>
+
+
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+	$(function(){
+  $("#navbar").load("navbar_1.html");
+});
+
+function addItem()
+	{
+		var input = document.getElementById('input').value;
+		var ul = document.getElementById('ul');
+		if(input==='')
+		{
+			alert('You must write something!');
+		}
+		else
+		{
+			var li = document.createElement('li');
+			var t = document.createTextNode(input);
+
+			li.appendChild(t);
+			ul.appendChild(li);
+		}
+		 document.getElementById("input").value = "xxx";
+
+	}
+
+function urlCheck(){
+	var organizationWebsite = document.getElementById('organizationWebsite').value;
+	var website = is_url(organizationWebsite);
+	if(!website){
+		alert('Please enter a valid website');
+		document.getElementById('organizationWebsite').focus();
+		return false;
+	}
+	else
+	{
+		alert('Form submitted');
+		return true;
+	}
+}
+
+	function is_url(str){
+  regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (regexp.test(str))
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+}
+
+    $(document).ready(function(){
+
+        $('input[type="file"]').change(function(e){
+
+            var fileName = e.target.files[0].name;
+
+            alert('The file "' + fileName +  '" has been selected.');
+
+        });
+
+    });
+
+</script>

@@ -1,0 +1,68 @@
+.body
+    {
+      font-family: Helvetica;
+    }
+
+
+.button {
+  display: inline-block;
+  border-radius: 5px;
+
+  border: black;
+  color: black;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 1;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+#googleM{
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+a{
+  text-decoration: none;
+}
+#services img{
+  padding-bottom: 20px;
+}
+.help{
+  font-size: 10px;
+  color: grey;
+}
+.is-danger{
+  color:red;
+}
+.errorlist{
+  color:red;
+  font-size: 12px;
+  font-weight: bold;
+}
